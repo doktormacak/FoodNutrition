@@ -10,10 +10,34 @@ class NutrientsWidget extends ConsumerWidget {
     final foodData = ref.watch(foodDataProvider);
     return foodData.when(
       data: (food) {
-        return Column(
-          children: [
-            Text(food.name),
-          ],
+        return SizedBox(
+          child: Column(
+            children: [
+              Text(food.name),
+              SizedBox(
+                height: MediaQuery.of(context).size.height - 132,
+                child: ListView.separated(
+                  scrollDirection: Axis.vertical,
+                  shrinkWrap: true,
+                  itemCount: food.nutrition.nutrients.length,
+                  separatorBuilder: (BuildContext context, int index) {
+                    return const SizedBox(
+                      height: 20,
+                    );
+                  },
+                  itemBuilder: (BuildContext context, int index) {
+                    return Column(children: [
+                      Text(food.nutrition.nutrients[index].name),
+                      Text(
+                          '${food.nutrition.nutrients[index].amount} ${food.nutrition.nutrients[index].unit}'),
+                      Text(
+                          '${food.nutrition.nutrients[index].percentOfDailyNeeds.toString()}% of daily intake'),
+                    ]);
+                  },
+                ),
+              ),
+            ],
+          ),
         );
       },
       error: (error, _) => const Text('error'),

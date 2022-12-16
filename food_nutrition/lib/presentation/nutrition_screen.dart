@@ -7,13 +7,10 @@ class NutritionScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Nutrition'),
-        ),
-        body: Column(
-          children: [
-            NutrientsWidget(),
-          ],
-        ));
+      appBar: AppBar(
+        title: const Text('Nutrition'),
+      ),
+      body: const NutrientsWidget(),
+    );
   }
 }

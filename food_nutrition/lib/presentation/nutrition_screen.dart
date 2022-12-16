@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:food_nutrition/presentation/nutrients_widget.dart';
 
 class NutritionScreen extends StatelessWidget {
   const NutritionScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(body: Center(child: Text('Hello')));
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text('Nutrition'),
+        ),
+        body: Column(
+          children: [
+            NutrientsWidget(),
+          ],
+        ));
   }
 }

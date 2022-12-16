@@ -21,7 +21,7 @@ Food _$FoodFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Food {
   String get name => throw _privateConstructorUsedError;
-  String get id => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
   Nutrition get nutrition => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -34,7 +34,7 @@ abstract class $FoodCopyWith<$Res> {
   factory $FoodCopyWith(Food value, $Res Function(Food) then) =
       _$FoodCopyWithImpl<$Res, Food>;
   @useResult
-  $Res call({String name, String id, Nutrition nutrition});
+  $Res call({String name, int id, Nutrition nutrition});
 
   $NutritionCopyWith<$Res> get nutrition;
 }
@@ -64,7 +64,7 @@ class _$FoodCopyWithImpl<$Res, $Val extends Food>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       nutrition: null == nutrition
           ? _value.nutrition
           : nutrition // ignore: cast_nullable_to_non_nullable
@@ -87,7 +87,7 @@ abstract class _$$_FoodCopyWith<$Res> implements $FoodCopyWith<$Res> {
       __$$_FoodCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, String id, Nutrition nutrition});
+  $Res call({String name, int id, Nutrition nutrition});
 
   @override
   $NutritionCopyWith<$Res> get nutrition;
@@ -114,7 +114,7 @@ class __$$_FoodCopyWithImpl<$Res> extends _$FoodCopyWithImpl<$Res, _$_Food>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       nutrition: null == nutrition
           ? _value.nutrition
           : nutrition // ignore: cast_nullable_to_non_nullable
@@ -134,7 +134,7 @@ class _$_Food with DiagnosticableTreeMixin implements _Food {
   @override
   final String name;
   @override
-  final String id;
+  final int id;
   @override
   final Nutrition nutrition;
 
@@ -185,7 +185,7 @@ class _$_Food with DiagnosticableTreeMixin implements _Food {
 abstract class _Food implements Food {
   const factory _Food(
       {required final String name,
-      required final String id,
+      required final int id,
       required final Nutrition nutrition}) = _$_Food;
 
   factory _Food.fromJson(Map<String, dynamic> json) = _$_Food.fromJson;
@@ -193,7 +193,7 @@ abstract class _Food implements Food {
   @override
   String get name;
   @override
-  String get id;
+  int get id;
   @override
   Nutrition get nutrition;
   @override

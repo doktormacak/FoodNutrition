@@ -9,7 +9,7 @@ part 'food.g.dart';
 class Food with _$Food {
   const factory Food({
     required String name,
-    required String id,
+    required int id,
     required Nutrition nutrition,
   }) = _Food;
 

@@ -8,7 +8,7 @@ part of 'food.dart';
 
 _$_Food _$$_FoodFromJson(Map<String, dynamic> json) => _$_Food(
       name: json['name'] as String,
-      id: json['id'] as String,
+      id: json['id'] as int,
       nutrition: Nutrition.fromJson(json['nutrition'] as Map<String, dynamic>),
     );
 

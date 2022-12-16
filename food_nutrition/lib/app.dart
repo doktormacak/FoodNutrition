@@ -7,8 +7,11 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const ProviderScope(
+    return ProviderScope(
       child: MaterialApp(
+        theme: ThemeData(
+          primarySwatch: Colors.green,
+        ),
         debugShowCheckedModeBanner: false,
         home: NutritionScreen(),
       ),

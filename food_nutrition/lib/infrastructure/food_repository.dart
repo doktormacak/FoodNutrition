@@ -8,7 +8,6 @@ class FoodRepository {
   Future<Food> getNutrition() async {
     Response response = await Dio().get(endpoint);
     Food food = Food.fromJson(response.data);
-    print(food);
     return food;
   }
 }

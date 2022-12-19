@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:food_nutrition/presentation/nutrients_widget.dart';
 
 class NutritionScreen extends StatelessWidget {
-  const NutritionScreen({super.key});
+  const NutritionScreen({super.key, required this.foodId});
+  final String foodId;
 
   @override
   Widget build(BuildContext context) {

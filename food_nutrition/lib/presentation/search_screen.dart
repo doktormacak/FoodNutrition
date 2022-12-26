@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:food_nutrition/infrastructure/ingredients_repository.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -40,51 +40,22 @@ class SearchFoodField extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final searchBarController = useTextEditingController();
     useListenable(searchBarController);
-
-    final ingrediants = ref.watch(foodDataProvider(searchBarController.text));
-    return ingrediants.when(
-      data: (ingrediants) {
+    final ingredients = ref.watch(foodDataProvider(searchBarController.text));
+    return ingredients.when(
+      data: (ingredients) {
         return Column(
           children: [
             TextField(
               controller: searchBarController,
             ),
-            Text(searchBarController.text),
-            TextButton(
-                onPressed: () {
-                  ingrediants.getIngrediants();
-                },
-                child: Text('getFuture'))
+            Text(ingredients.name),
           ],
         );
       },
-      error: (Object error, StackTrace stackTrace) {
+      error: (error, stackTrace) {
         return Text(error.toString());
       },
-      loading: () {
-        return CircularProgressIndicator();
-      },
+      loading: () => const CircularProgressIndicator(),
     );
   }
 }
-
-class IngrediantsRepository {
-  IngrediantsRepository({
-    required this.query,
-  });
-
-  final String query;
-  late final String endpoint =
-      'https://api.spoonacular.com/food/ingredients/search?query=$query&apiKey=367596b912dd4ac39934be0b3ffa55dc';
-
-  Future<String> getIngrediants() async {
-    Response response = await Dio().get(endpoint);
-    print(response);
-    return 'response.data';
-  }
-}
-
-final foodDataProvider =
-    FutureProvider.family<IngrediantsRepository, String>((ref, query) async {
-  return IngrediantsRepository(query: query);
-});

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:food_nutrition/infrastructure/food_repository.dart';
 
 class NutrientsWidget extends ConsumerWidget {

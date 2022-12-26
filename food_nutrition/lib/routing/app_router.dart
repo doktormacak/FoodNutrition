@@ -1,4 +1,4 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:food_nutrition/presentation/nutrition_screen.dart';
 import 'package:food_nutrition/presentation/search_screen.dart';
 import 'package:go_router/go_router.dart';

@@ -1,4 +1,4 @@
-import 'package:food_nutrition/domain/food/nutrition.dart';
+import 'package:food_nutrition/domain/nutritions/nutrition.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
 

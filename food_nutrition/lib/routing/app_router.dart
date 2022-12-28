@@ -17,11 +17,11 @@ final goRouterProvider = Provider<GoRouter>((ref) {
           return const SearchScreen();
         }),
     GoRoute(
-        path: '/nutrition/:id',
+        path: '/nutrition/:foodId',
         name: AppRoute.nutrition.name,
         builder: (context, state) {
-          final foodId = state.params['id']!;
-          return NutritionScreen(foodId: foodId);
+          final foodId = state.params['foodId']!;
+          return NutritionScreen(foodId: int.parse(foodId));
         }),
   ]);
 });

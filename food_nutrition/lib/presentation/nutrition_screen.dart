@@ -3,7 +3,7 @@ import 'package:food_nutrition/presentation/nutrients_widget.dart';
 
 class NutritionScreen extends StatelessWidget {
   const NutritionScreen({super.key, required this.foodId});
-  final String foodId;
+  final int foodId;
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +11,7 @@ class NutritionScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Nutrition'),
       ),
-      body: const NutrientsWidget(),
+      body: NutrientsWidget(foodId: foodId),
     );
   }
 }

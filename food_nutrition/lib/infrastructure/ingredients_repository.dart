@@ -15,7 +15,6 @@ class IngrediantsRepository {
   Future<IngredientsList> getIngredients() async {
     if (query.isNotEmpty) {
       Response response = await Dio().get(endpoint);
-      print(response.data);
       IngredientsList ingredientsList = IngredientsList.fromJson(response.data);
       return ingredientsList;
     } else {

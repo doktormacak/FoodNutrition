@@ -3,16 +3,17 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:food_nutrition/infrastructure/food_repository.dart';
 
 class NutrientsWidget extends ConsumerWidget {
-  const NutrientsWidget({Key? key}) : super(key: key);
+  const NutrientsWidget({required this.foodId, Key? key}) : super(key: key);
+  final int foodId;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final foodData = ref.watch(foodDataProvider);
+    final foodData = ref.watch(foodDataProvider(foodId.toString()));
     return foodData.when(
       data: (food) {
         return Column(
           children: [
-            Text(food.name),
+            Text(foodId.toString()),
             Expanded(
               child: ListView.separated(
                 scrollDirection: Axis.vertical,

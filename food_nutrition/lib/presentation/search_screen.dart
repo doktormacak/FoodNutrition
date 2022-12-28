@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:food_nutrition/infrastructure/ingredients_repository.dart';
+import 'package:food_nutrition/routing/app_router.dart';
+import 'package:go_router/go_router.dart';
 import 'dart:async';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -57,19 +59,32 @@ class FoodList extends ConsumerWidget {
     final ingredientsList = ref.watch(foodDataProvider(seachQuery));
     return ingredientsList.when(
       data: (ingredientsList) {
-        return Expanded(
-          child: ListView.separated(
-            scrollDirection: Axis.vertical,
-            shrinkWrap: true,
-            itemCount: ingredientsList.results.length,
-            separatorBuilder: (BuildContext context, int index) {
-              return const SizedBox(
-                height: 20,
-              );
-            },
-            itemBuilder: (BuildContext context, int index) {
-              return Text(ingredientsList.results[index].name);
-            },
+        return Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Expanded(
+            child: ListView.separated(
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
+              itemCount: ingredientsList.results.length,
+              separatorBuilder: (BuildContext context, int index) {
+                return Container(
+                  color: Colors.grey,
+                  height: 2,
+                );
+              },
+              itemBuilder: (BuildContext context, int index) {
+                return Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: GestureDetector(
+                      onTap: () {
+                        context.pushNamed(AppRoute.nutrition.name, params: {
+                          'foodId': ingredientsList.results[index].id.toString()
+                        });
+                      },
+                      child: Text(ingredientsList.results[index].name)),
+                );
+              },
+            ),
           ),
         );
       },
